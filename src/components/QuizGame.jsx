@@ -201,7 +201,7 @@ export default function QuizGame({
     }, [questions]);
 
     const question = levelQuestions?.[currentQuestion];
-    if (!question) return null;
+
     const levelProgress = levelQuestions.length ? ((currentQuestion + 1) / levelQuestions.length) * 100 : 0;
     const progressStyle = { width: `${levelProgress}%` };
 

@@ -1,8 +1,8 @@
 export const fetchQuestions = async (category, level) => {
     const res = await fetch(
-        `/api/questions?category=${category}&level=${level}`
+        `http://localhost:5000/api/questions?category=${category}&level=${level}`
     );
 
     const data = await res.json();
     return data;
-};nn
+};
