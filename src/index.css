@@ -60,7 +60,7 @@ body {
   margin: 0 auto;
   text-align: center;
   border-inline: none;
-   min-height: 100svh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-
+import "./QuizGame.css";
 import { fetchQuestions } from "../api/questionsApi";
 import { saveProgress } from "../api/progress";
 const correctMessages = [
@@ -772,7 +772,7 @@ export default function QuizGame({
                             <p>{popupMessage}</p>
 
                             <button
-                                className="popup-btn"
+                                className="quiz-try-again"
                                 onClick={() => {
                                     setShowPopup(false);
 
@@ -805,7 +805,7 @@ export default function QuizGame({
                     <div className="button-group">
 
                         <button
-                            className="btn"
+                            className="quiz-next-level"
                             onClick={() => {
 
                                 if (levelScore >= 8) {
@@ -831,11 +831,11 @@ export default function QuizGame({
                                 setIsCorrect(false);
                             }}
                         >
-                            Next Level →
+                            Next Level→
                         </button>
 
                         <button
-                            className="btn"
+                            className="quiz-exit-menu"
                             onClick={() => {
 
                                 setCurrentQuestion(0);
@@ -904,35 +904,35 @@ export default function QuizGame({
             {header}
             {showEmojiFlash && (
                 <div className="emoji-shower-overlay">
-                {Array.from({ length: 40 }).map((_, i) => {
-                    const emoji = emojiFlashType === "happy"
-                        ? happyEmojis[Math.floor(Math.random() * happyEmojis.length)]
-                        : sadEmojis[Math.floor(Math.random() * sadEmojis.length)];
-                    const left = Math.random() * 100;
-                    const size = 24 + Math.random() * 28;
-                    const delay = Math.random() * 0.35;
-                    const duration = 1.2 + Math.random() * 0.8;
-                    const animationName = emojiFlashType === "happy" ? "emoji-fall" : "emoji-rise";
-                    const startPosition = emojiFlashType === "happy" ? "-12%" : "112%";
+                    {Array.from({ length: 40 }).map((_, i) => {
+                        const emoji = emojiFlashType === "happy"
+                            ? happyEmojis[Math.floor(Math.random() * happyEmojis.length)]
+                            : sadEmojis[Math.floor(Math.random() * sadEmojis.length)];
+                        const left = Math.random() * 100;
+                        const size = 24 + Math.random() * 28;
+                        const delay = Math.random() * 0.35;
+                        const duration = 1.2 + Math.random() * 0.8;
+                        const animationName = emojiFlashType === "happy" ? "emoji-fall" : "emoji-rise";
+                        const startPosition = emojiFlashType === "happy" ? "-12%" : "112%";
 
-                    return (
-                        <div
-                            key={i}
-                            style={{
-                                position: "absolute",
-                                left: `${left}%`,
-                                top: startPosition,
-                                fontSize: size,
-                                animation: `${animationName} ${duration}s ease-out ${delay}s forwards`,
-                                opacity: 0,
-                                pointerEvents: "none"
-                            }}
-                        >
-                            {emoji}
-                        </div>
-                    );
-                })}
-                <style>{`
+                        return (
+                            <div
+                                key={i}
+                                style={{
+                                    position: "absolute",
+                                    left: `${left}%`,
+                                    top: startPosition,
+                                    fontSize: size,
+                                    animation: `${animationName} ${duration}s ease-out ${delay}s forwards`,
+                                    opacity: 0,
+                                    pointerEvents: "none"
+                                }}
+                            >
+                                {emoji}
+                            </div>
+                        );
+                    })}
+                    <style>{`
                         .emoji-shower-overlay {
                             position: fixed;
                             inset: 0;
@@ -961,7 +961,7 @@ export default function QuizGame({
                             }
                         }
                     `}</style>
-            </div>
+                </div>
             )}
 
 
