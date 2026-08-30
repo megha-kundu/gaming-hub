@@ -108,7 +108,7 @@ export default function QuizGame({
 
     const saveScore = async () => {
         try {
-            await fetch("http://localhost:5000/api/scores", {
+            await fetch("/api/scores", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

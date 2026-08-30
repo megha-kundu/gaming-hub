@@ -4,7 +4,7 @@ function Leaderboard({ onBack }) {
     const [scores, setScores] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/scores")
+        fetch("/api/scores")
             .then((res) => res.json())
             .then((data) => setScores(data))
             .catch(console.error);
