@@ -11,6 +11,10 @@ The project demonstrates how a complete full-stack application works from the **
 
 🔗 **[View Gaming Hub Live](YOUR_LIVE_PROJECT_URL)**
 
+---
+Note: The live site is hosted on a free tier. It may take up to 60 seconds to load initially while the server wakes up. Thank you for your patience!
+
+##
 **GitHub Repository:**
 https://github.com/megha-kundu/gaming-hub
 
