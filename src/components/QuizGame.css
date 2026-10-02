@@ -150,16 +150,13 @@
 
     .button-group {
         flex-direction: column;
+        width: 100%;
     }
 
     .quiz-next-level,
-    .quiz-exit-menu {
-        width: 100%;
-        max-width: 290px;
-    }
-
+    .quiz-exit-menu,
     .quiz-try-again {
         width: 100%;
-        max-width: 260px;
+        max-width: 290px;
     }
 }

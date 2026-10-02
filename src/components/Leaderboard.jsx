@@ -15,88 +15,112 @@ function Leaderboard({ onBack }) {
             style={{
                 minHeight: "100vh",
                 background: "linear-gradient(135deg,#667eea,#764ba2)",
-                padding: "40px",
-                color: "#fff"
+                padding: "clamp(16px, 4vw, 40px)",
+                color: "#fff",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
             }}
         >
-            <button
-                onClick={onBack}
-                style={{
-                    background: "#fff",
-                    color: "#6C63FF",
-                    border: "none",
-                    padding: "10px 18px",
-                    borderRadius: "10px",
-                    cursor: "pointer",
-                    fontWeight: "600",
-                    marginBottom: "25px"
-                }}
-            >
-                ⬅ Back
-            </button>
-
-            <h1
-                style={{
-                    textAlign: "center",
-                    marginBottom: "10px",
-                    fontSize: "36px",
-                    fontWeight: 700,
-                    letterSpacing: "1px",
-                    textShadow: "0 4px 12px rgba(0,0,0,0.25)"
-                }}
-            >
-                🏆 Level Leaderboard
-            </h1>
-
-            <p style={{ textAlign: "center", marginBottom: "25px", opacity: 0.95, fontSize: "16px" }}>
-                Top players by level
-            </p>
-
-            <div
-                style={{
-                    maxWidth: "700px",
-                    margin: "auto",
-                    background: "rgba(255,255,255,0.12)",
-                    backdropFilter: "blur(12px)",
-                    borderRadius: "18px",
-                    padding: "25px"
-                }}
-            >
-                <table
+            <div style={{ width: "100%", maxWidth: "1100px" }}>
+                <button
+                    onClick={onBack}
                     style={{
-                        width: "100%",
-                        color: "#fff",
-                        borderCollapse: "collapse"
+                        background: "#fff",
+                        color: "#6C63FF",
+                        border: "none",
+                        padding: "10px 18px",
+                        borderRadius: "10px",
+                        cursor: "pointer",
+                        fontWeight: "600",
+                        marginBottom: "25px"
                     }}
                 >
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Player</th>
-                            <th>Category</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
+                    ⬅ Back
+                </button>
 
-                    <tbody>
-                        {scores.map((player, index) => (
-                            <tr key={player._id}>
-                                <td style={{ padding: "12px", textAlign: "center" }}>
-                                    {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}
-                                </td>
+                <h1
+                    style={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontSize: "clamp(2rem, 4vw, 2.7rem)",
+                        fontWeight: 700,
+                        letterSpacing: "1px",
+                        textShadow: "0 4px 12px rgba(0,0,0,0.25)"
+                    }}
+                >
+                    🏆 Level Leaderboard
+                </h1>
 
-                                <td style={{ padding: "12px" }}>{player.username || "Guest"}</td>
+                <p style={{ textAlign: "center", marginBottom: "25px", opacity: 0.95, fontSize: "clamp(0.95rem, 2vw, 1.1rem)" }}>
+                    Top players by level
+                </p>
 
-                                <td style={{ padding: "12px" }}>{player.category}</td>
-
-                                <td style={{ padding: "12px", fontWeight: "bold" }}>
-                                    {player.score}
-                                </td>
+                <div
+                    className="leaderboard-panel"
+                    style={{
+                        width: "100%",
+                        maxWidth: "700px",
+                        margin: "auto",
+                        background: "rgba(255,255,255,0.12)",
+                        backdropFilter: "blur(12px)",
+                        WebkitBackdropFilter: "blur(12px)",
+                        borderRadius: "18px",
+                        padding: "clamp(12px, 3vw, 25px)",
+                        overflowX: "auto"
+                    }}
+                >
+                    <table
+                        className="leaderboard-table"
+                        style={{
+                            width: "100%",
+                            minWidth: "420px",
+                            color: "#fff",
+                            borderCollapse: "collapse"
+                        }}
+                    >
+                        <thead>
+                            <tr>
+                                <th style={{ padding: "12px 10px", fontSize: "0.85rem" }}>Rank</th>
+                                <th style={{ padding: "12px 10px", fontSize: "0.85rem" }}>Player</th>
+                                <th style={{ padding: "12px 10px", fontSize: "0.85rem" }}>Category</th>
+                                <th style={{ padding: "12px 10px", fontSize: "0.85rem" }}>Score</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+
+                        <tbody>
+                            {scores.map((player, index) => (
+                                <tr key={player._id}>
+                                    <td style={{ padding: "12px 10px", textAlign: "center", fontSize: "0.9rem" }}>
+                                        {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}
+                                    </td>
+
+                                    <td style={{ padding: "12px 10px", fontSize: "0.9rem" }}>{player.username || "Guest"}</td>
+
+                                    <td style={{ padding: "12px 10px", fontSize: "0.9rem" }}>{player.category}</td>
+
+                                    <td style={{ padding: "12px 10px", fontWeight: "bold", fontSize: "0.9rem" }}>
+                                        {player.score}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <style>{`
+                @media (max-width: 540px) {
+                    .leaderboard-panel {
+                        padding: 10px !important;
+                    }
+
+                    .leaderboard-table {
+                        min-width: 360px !important;
+                        font-size: 0.8rem;
+                    }
+                }
+            `}</style>
         </div>
     );
 }

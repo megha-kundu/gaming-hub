@@ -70,12 +70,15 @@ export default function LevelSelection({
                     style={{
                         textAlign: "center",
                         marginBottom: "20px",
-                        fontSize: "2.5rem",
+                        fontSize: "clamp(1.5rem, 6vw, 2.5rem)",
+                        lineHeight: 1.2,
                         letterSpacing: "1px",
-                        color: "#4f46e5"
+                        color: "#4f46e5",
+                        overflowWrap: "anywhere",
+                        textTransform: "capitalize"
                     }}
                 >
-                    🎯 {category} Levels
+                    🎯 {category.replace(/-/g, " ")} Levels
                 </h1>
 
                 <p
